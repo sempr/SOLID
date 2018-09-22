@@ -5,6 +5,7 @@
 # extend the functionality of `AreaCalculator` in this module whereas it
 # is not in `python_code.bad.open_close` module.
 
+import math
 from abc import ABCMeta, abstractproperty
 
 class Shape(object):
@@ -24,6 +25,24 @@ class Rectangle(Shape):
     def area(self):
         return self.width * self.height
 
+
+class Square(Shape):
+    def __init__(self, side_length):
+        self.side_length = side_length
+
+    @property
+    def area(self):
+        return self.side_length ** 2
+
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    @property
+    def area(self):
+        return self.radius ** 2 * math.pi
+
 class AreaCalculator(object):
 
     def __init__(self, shapes):
@@ -41,7 +60,7 @@ class AreaCalculator(object):
 # alone without modify them. That is the key of open/close principle.
 
 def main():
-    shapes = [Rectangle(1, 6), Rectangle(2, 3)]
+    shapes = [Rectangle(1, 6), Rectangle(2, 3), Square(4), Circle(3)]
     calculator = AreaCalculator(shapes)
 
     print "The total area is: ", calculator.total_area
