@@ -18,8 +18,8 @@ class Shape(object, metaclass=ABCMeta):
     def perimeter(self):
         """"""
 
-class Rectangle(Shape):
 
+class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -31,7 +31,8 @@ class Rectangle(Shape):
     @property
     def perimeter(self):
         """"""
-        return (self.width + self.height)*2
+        return (self.width + self.height) * 2
+
 
 class Square(Shape):
     def __init__(self, side_length):
@@ -39,12 +40,13 @@ class Square(Shape):
 
     @property
     def area(self):
-        return self.side_length ** 2
+        return self.side_length**2
 
     @property
     def perimeter(self):
         """"""
         return self.side_length * 4
+
 
 class Circle(Shape):
     def __init__(self, radius):
@@ -52,15 +54,15 @@ class Circle(Shape):
 
     @property
     def area(self):
-        return self.radius ** 2 * math.pi
+        return self.radius**2 * math.pi
 
     @property
     def perimeter(self):
         """"""
         return math.pi * self.radius * 2
 
-class AreaCalculator(object):
 
+class AreaCalculator(object):
     def __init__(self, shapes):
         self.shapes = shapes
 
@@ -77,9 +79,12 @@ class AreaCalculator(object):
         for shape in self.shapes:
             total += shape.perimeter
         return total
+
+
 # Note that if we want to extend the functionality of AreaCalculator to support calculating
 # area of different shape, we only need to define new subtype of `Shape` and leave other code
 # alone without modify them. That is the key of open/close principle.
+
 
 def main():
     shapes = [Rectangle(1, 6), Rectangle(2, 3), Square(4), Circle(3)]
@@ -87,6 +92,7 @@ def main():
 
     print("The total area is: ", calculator.total_area)
     print("The total perimeter is: ", calculator.total_perimeter)
+
 
 if __name__ == '__main__':
     main()

@@ -6,26 +6,28 @@
 
 from abc import ABCMeta, abstractmethod
 
+
 class IWorker(object, metaclass=ABCMeta):
     @abstractmethod
     def work(self):
         pass
 
+
 # `IWorker` defines a interface which requires `work` method.
 
-class Worker(IWorker):
 
+class Worker(IWorker):
     def work(self):
         print("I'm working!!")
 
 
 class Manager(object):
-
     def __init__(self):
         self.worker = None
 
     def set_worker(self, worker):
-        assert isinstance(worker, IWorker), '`worker` must be of type {}'.format(Worker)
+        assert isinstance(
+            worker, IWorker), '`worker` must be of type {}'.format(Worker)
 
         self.worker = worker
 
@@ -34,13 +36,15 @@ class Manager(object):
             self.worker.work()
             # And some complex codes go here....
 
-class SuperWorker(IWorker):
 
+class SuperWorker(IWorker):
     def work(self):
         print("I work very hard!!!")
 
+
 # Now, the manager support `SuperWorker`...
 # In addition, it will support any worker which obeys the interface defined by `IWorker`!
+
 
 def main():
 
@@ -56,6 +60,7 @@ def main():
         manager.manage()
     except AssertionError:
         print("manager fails to support super_worker....")
+
 
 if __name__ == "__main__":
     main()

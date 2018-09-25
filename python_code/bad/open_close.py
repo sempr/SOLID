@@ -5,14 +5,14 @@
 # the area of different shape? What would you do with the code in the property
 # `total_area` of class `AreaCalculator`?
 
-class Rectangle(object):
 
+class Rectangle(object):
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
-class AreaCalculator(object):
 
+class AreaCalculator(object):
     def __init__(self, shapes):
 
         assert isinstance(shapes, list), "`shapes` should be of type `list`."
@@ -26,10 +26,12 @@ class AreaCalculator(object):
 
         return total
 
+
 def main():
     shapes = [Rectangle(2, 3), Rectangle(1, 6)]
     calculator = AreaCalculator(shapes)
     print("The total area is: ", calculator.total_area)
+
 
 if __name__ == '__main__':
 
