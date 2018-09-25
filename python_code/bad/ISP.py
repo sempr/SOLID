@@ -4,9 +4,7 @@
 from abc import ABCMeta, abstractmethod
 import time
 
-class AbstractWorker(object):
-    __metaclass__ = ABCMeta
-
+class AbstractWorker(object, metaclass=ABCMeta):
     @abstractmethod
     def work(self):
         pass
@@ -18,19 +16,19 @@ class AbstractWorker(object):
 class Worker(AbstractWorker):
 
     def work(self):
-        print "I'm normal worker. I'm working."
+        print("I'm normal worker. I'm working.")
 
     def eat(self):
-        print "Lunch break....(5 secs)"
+        print("Lunch break....(5 secs)")
         time.sleep(5)
 
 class SuperWorker(AbstractWorker):
 
     def work(self):
-        print "I'm super worker. I work very hard!"
+        print("I'm super worker. I work very hard!")
 
     def eat(self):
-        print "Lunch break....(3 secs)"
+        print("Lunch break....(3 secs)")
         time.sleep(3)
 
 
@@ -56,10 +54,10 @@ class Manager(object):
 class Robot(AbstractWorker):
 
     def work(self):
-        print "I'm a robot. I'm working...."
+        print("I'm a robot. I'm working....")
 
     def eat(self):
-        print "I don't need to eat...."   # This code doing nothing but it is a must. (Bad!)
+        print("I don't need to eat....")   # This code doing nothing but it is a must. (Bad!)
 
 def main():
 

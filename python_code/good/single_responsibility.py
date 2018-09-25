@@ -8,9 +8,7 @@
 
 from abc import ABCMeta, abstractmethod
 
-class IEmail(object):
-    __metaclass__ = ABCMeta
-
+class IEmail(object, metaclass=ABCMeta):
     @abstractmethod
     def setSender(self, sender):
         pass
@@ -23,9 +21,7 @@ class IEmail(object):
     def setContent(self, content):
         pass
 
-class IContent(object):
-    __metaclass__ = ABCMeta
-
+class IContent(object, metaclass=ABCMeta):
     @abstractmethod
     def getString(self):
         pass
@@ -73,7 +69,7 @@ def main():
     email.setReceiver('james')
     content = MyContent('Hello, there!')
     email.setContent(content)
-    print email
+    print(email)
 
 if __name__ == '__main__':
     main()
